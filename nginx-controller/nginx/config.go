@@ -21,6 +21,7 @@ type Config struct {
 	SSLRedirect                   bool
 	MainMainSnippets              []string
 	MainHTTPSnippets              []string
+	MainStreamSnippets            []string
 	MainServerNamesHashBucketSize string
 	MainServerNamesHashMaxSize    string
 	MainLogFormat                 string
@@ -345,6 +346,13 @@ func ParseConfigMap(cfgm *api_v1.ConfigMap, nginxPlus bool) *Config {
 	}
 	if ingressTemplate, exists := cfgm.Data["ingress-template"]; exists {
 		cfg.IngressTemplate = &ingressTemplate
+	}
+	if mainStreamSnippets, exists, err := GetMapKeyAsStringSlice(cfgm.Data, "stream-snippets", cfgm, "\n"); exists {
+		if err != nil {
+			glog.Error(err)
+		} else {
+			cfg.MainStreamSnippets = mainStreamSnippets
+		}
 	}
 	return cfg
 }

@@ -1082,6 +1082,7 @@ func GenerateNginxMainConfig(config *Config) *NginxMainConfig {
 	nginxCfg := &NginxMainConfig{
 		MainSnippets:              config.MainMainSnippets,
 		HTTPSnippets:              config.MainHTTPSnippets,
+		StreamSnippets:            config.MainStreamSnippets,
 		ServerNamesHashBucketSize: config.MainServerNamesHashBucketSize,
 		ServerNamesHashMaxSize:    config.MainServerNamesHashMaxSize,
 		LogFormat:                 config.MainLogFormat,

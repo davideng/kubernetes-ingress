@@ -84,3 +84,9 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
 }
+
+stream {
+    {{range $value := .StreamSnippets}}
+    {{$value}}
+    {{end}} 
+}

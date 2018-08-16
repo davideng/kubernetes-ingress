@@ -88,6 +88,7 @@ var mainCfg = nginx.NginxMainConfig{
 	WorkerShutdownTimeout:  "1m",
 	WorkerConnections:      "1024",
 	WorkerRlimitNofile:     "65536",
+	StreamSnippets:         []string{"# comment"},
 }
 
 func TestIngressForNGINXPlus(t *testing.T) {
