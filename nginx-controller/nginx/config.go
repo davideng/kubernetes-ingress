@@ -25,6 +25,7 @@ type Config struct {
 	MainServerNamesHashBucketSize string
 	MainServerNamesHashMaxSize    string
 	MainLogFormat                 string
+	MainStreamLogFormat           string
 	ProxyBuffering                bool
 	ProxyBuffers                  string
 	ProxyBufferSize               string
@@ -259,6 +260,9 @@ func ParseConfigMap(cfgm *api_v1.ConfigMap, nginxPlus bool) *Config {
 
 	if logFormat, exists := cfgm.Data["log-format"]; exists {
 		cfg.MainLogFormat = logFormat
+	}
+	if streamLogFormat, exists := cfgm.Data["stream-log-format"]; exists {
+		cfg.MainStreamLogFormat = streamLogFormat
 	}
 	if proxyBuffering, exists, err := GetMapKeyAsBool(cfgm.Data, "proxy-buffering", cfgm); exists {
 		if err != nil {

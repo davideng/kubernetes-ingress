@@ -1086,6 +1086,7 @@ func GenerateNginxMainConfig(config *Config) *NginxMainConfig {
 		ServerNamesHashBucketSize: config.MainServerNamesHashBucketSize,
 		ServerNamesHashMaxSize:    config.MainServerNamesHashMaxSize,
 		LogFormat:                 config.MainLogFormat,
+		StreamLogFormat:           config.MainStreamLogFormat,
 		SSLProtocols:              config.MainServerSSLProtocols,
 		SSLCiphers:                config.MainServerSSLCiphers,
 		SSLDHParam:                config.MainServerSSLDHParam,
